@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tides of Quiet Disruption</title>
+    <style>
+/* md2html — Report Stylesheet */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #1b1b1b; color: #c8c8c8; margin: 0; padding: 0;
+    line-height: 1.7; font-size: 15px;
+}
+a { color: #82aaff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.header {
+    background: #232323; border-bottom: 1px solid #464646;
+    padding: 20px 32px; display: flex; align-items: center; gap: 16px;
+    position: sticky; top: 0; z-index: 100;
+}
+.header svg { flex-shrink: 0; }
+.header-title { color: #ffcb6b; font-weight: 700; font-size: 1.6em; line-height: 1.2; }
+.header-subtitle { color: #b0b0b0; font-size: 0.9em; margin-left: auto; }
+.page-wrapper { display: flex; min-height: 100vh; }
+.sidebar {
+    position: sticky; top: 62px; left: 0;
+    width: 240px; min-width: 240px; max-height: calc(100vh - 62px);
+    overflow-y: auto; background: #232323;
+    border-right: 1px solid #464646; padding: 16px 0; font-size: 13px;
+}
+.sidebar-title {
+    color: #ffcb6b; font-weight: 700; font-size: 14px;
+    padding: 8px 16px 12px; border-bottom: 1px solid #464646; margin-bottom: 8px;
+}
+.sidebar a {
+    display: block; padding: 4px 16px; color: #b0b0b0;
+    text-decoration: none; transition: background 0.15s, color 0.15s;
+}
+.sidebar a:hover { background: #2a2a2a; color: #e0e0e0; }
+.main { flex: 1; padding: 24px 32px 60px; max-width: 960px; }
+h1 { color: #ffcb6b; font-size: 1.4em; margin: 24px 0 16px; }
+h2 {
+    color: #ffcb6b; font-size: 1.2em; margin: 32px 0 12px;
+    padding-bottom: 6px; border-bottom: 1px solid #3a3a3a;
+}
+h3 { color: #c3e88d; font-size: 1.05em; margin-top: 20px; }
+h4 { color: #89ddff; font-size: 1.0em; margin-top: 16px; }
+code {
+    background: #2d2d2d; padding: 2px 6px; border-radius: 3px;
+    font-size: 0.9em; font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+pre {
+    background: #252525; border: 1px solid #464646; border-radius: 6px;
+    padding: 14px 18px; overflow-x: auto; font-size: 13px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    line-height: 1.6; color: #c3e88d;
+}
+pre code { background: none; padding: 0; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px; }
+thead th {
+    background: #2a2a2a; color: #e0e0e0; font-weight: 600;
+    padding: 8px 12px; text-align: left; border-bottom: 2px solid #464646;
+}
+tbody td { padding: 6px 12px; border-bottom: 1px solid #333; vertical-align: top; }
+tbody tr:hover { background: #262626; }
+blockquote {
+    background: #252525; border-left: 4px solid #c792ea;
+    padding: 12px 20px; margin: 16px 0;
+    border-radius: 0 6px 6px 0; color: #b0b0b0;
+}
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 4px; }
+hr { border: none; border-top: 1px solid #3a3a3a; margin: 24px 0; }
+img { max-width: 100%; border-radius: 6px; }
+.full { color: #c3e88d; }
+.none { color: #ff5370; }
+.partial { color: #ffcb6b; }
+.prompt-block {
+    background: #252525; border-left: 4px solid #c792ea;
+    padding: 16px 20px; margin: 16px 0 28px;
+    border-radius: 0 6px 6px 0; font-size: 13px;
+    color: #b0b0b0; line-height: 1.8;
+}
+.prompt-block .prompt-label {
+    color: #c792ea; font-weight: 700; font-size: 14px; margin-bottom: 8px; display: block;
+}
+.summary { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.summary-card {
+    background: #252525; border: 1px solid #464646; border-radius: 8px;
+    padding: 12px 18px; flex: 1; min-width: 140px; text-align: center;
+}
+.summary-card .number { font-size: 28px; font-weight: 700; }
+.summary-card .label { font-size: 12px; color: #909090; margin-top: 2px; }
+.diagram {
+    background: #252525; border: 1px solid #464646; border-radius: 8px;
+    padding: 20px; margin: 16px 0; font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; line-height: 1.6; overflow-x: auto; white-space: pre; color: #c3e88d;
+}
+.badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+}
+.badge-fix { background: #1e2e1e; color: #c3e88d; border: 1px solid #4caf50; }
+.badge-feat { background: #1e2e3e; color: #82aaff; border: 1px solid #2196f3; }
+.badge-arch { background: #2a2040; color: #c792ea; border: 1px solid #9c27b0; }
+.badge-test { background: #2a2a1e; color: #ffcb6b; border: 1px solid #ff9800; }
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 16px; }
+    .header { padding: 12px 16px; }
+    .header-title { font-size: 1.2em; }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-title">Tides of Quiet Disruption</div>
+</div>
+
+<div class="page-wrapper">
+<nav class="sidebar">
+    <div class="sidebar-title">Contents</div>
+    <a href="#section-1">Project Information</a>
+    <a href="#section-2">SDG 14: Life Below Water</a>
+    <a href="#section-3">Quote</a>
+    <a href="#section-4">Concept</a>
+    <a href="#section-5">Connection to SDG and Quote</a>
+    <a href="#section-6">Generative System</a>
+    <a href="#section-7">Call to Action</a>
+</nav>
+
+<div class="main">
+<h1>Tides of Quiet Disruption</h1>
+<h2 id="section-1">Project Information</h2>
+<p><strong>Student Name:</strong> [Your Name]<br><strong>Group Name:</strong> [Group Name]<br><strong>Group Members:</strong> [Names]<br><strong>Course:</strong> COMM2754 – [Class Time]<br><strong>Affiliation:</strong> RMIT University Vietnam, Saigon South Campus, School of Communication and Design, Digital Media Program<br><strong>Date:</strong> [Insert Date]</p>
+<h2 id="section-2">SDG 14: Life Below Water</h2>
+<p><strong>“Conserve and sustainably use the oceans, seas and marine resources for sustainable development.”</strong><br>Source: United Nations (2015), <em>Sustainable Development Goals</em></p>
+<h2 id="section-3">Quote</h2>
+<p><em>“No water, no life. No blue, no green.”</em><br>— Sylvia Earle, <em>Mission Blue</em> (2010)</p>
+<h2 id="section-4">Concept</h2>
+<p>This project presents a generative visual system that explores the gradual impact of plastic pollution on marine ecosystems. Fish are represented as simple blue geometric forms, while plastic appears as sharp triangular shapes that move through the space like ocean currents. Rather than illustrating immediate destruction, the work focuses on subtle and cumulative disruption. As plastic elements gather around fish, their forms begin to distort, indicating stress and imbalance within the environment. When pollution intensifies, irregular shapes emerge around the fish, symbolizing contamination and ecological instability. The system is driven by simple rules such as distance, quantity, and conditional interactions, allowing complex behaviours to emerge from minimal logic. This reflects how real-world environmental damage often develops over time rather than through sudden events.</p>
+<h2 id="section-5">Connection to SDG and Quote</h2>
+<p>Marine biologist Sylvia Earle explains that every breath we take and every drop of water we drink connects us to the ocean. However, plastic pollution continues to harm marine animals and their habitats. Protecting Life Below Water (SDG 14) means protecting these ecosystems and the species that live in them. Simple choices, such as reducing single-use plastic, can help preserve ocean health and support marine life.</p>
+<h2 id="section-6">Generative System</h2>
+<ul>
+<li>Built using p5.js</li>
+<li>Changes on each page load</li>
+<li>Uses randomness, distance, counting, and conditional logic</li>
+<li>Simulates ecological imbalance through simple visual rules</li>
+</ul>
+<h2 id="section-7">Call to Action</h2>
+<p><strong>Skip one plastic, let wild seas thrive.</strong></p>
+
+</div>
+</div>
+
+</body>
+</html>
